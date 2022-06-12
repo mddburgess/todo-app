@@ -1,0 +1,7 @@
+{
+  "apiPackage": "dev.mikeburgess.todoapp.api",
+  "modelPackage": "dev.mikeburgess.todoapp.api.model",
+  "documentationProvider": "none",
+  "exceptionHandler": false,
+  "interfaceOnly": true
+}
