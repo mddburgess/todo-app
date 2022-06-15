@@ -109,11 +109,11 @@ components:
           example: "Learn OpenAPI"
         created_at:
           type: string
+          format: date-time
           description: The time the todo item was created.
           readOnly: true
-          example: "2022-06-12T12:34:56.789Z"
         updated_at:
           type: string
+          format: date-time
           description: The time the todo item was last updated.
           readOnly: true
-          example: "2022-06-12T16:20:00.000Z"

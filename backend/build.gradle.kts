@@ -33,9 +33,9 @@ dependencies {
 
 openApiGenerate {
     generatorName.set("kotlin-spring")
-    inputSpec.set("src/main/resources/openapi.yaml")
+    inputSpec.set("$projectDir/../api/openapi.yaml")
     outputDir.set("$buildDir/generated")
-    configFile.set("src/main/resources/api-config.json")
+    configFile.set("$projectDir/../api/api-config.json")
 }
 
 kotlin {
