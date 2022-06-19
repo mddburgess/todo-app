@@ -3,5 +3,6 @@
   "modelPackage": "dev.mikeburgess.todoapp.api.model",
   "documentationProvider": "none",
   "exceptionHandler": false,
-  "interfaceOnly": true
+  "interfaceOnly": true,
+  "modelNameSuffix": "Data"
 }
