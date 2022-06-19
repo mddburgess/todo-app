@@ -18,7 +18,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/todoItem"
+                  $ref: "schema/todo_item.yaml"
     post:
       summary: Creates a new todo item.
       requestBody:
@@ -26,7 +26,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/todoItem"
+              $ref: "schema/todo_item.yaml"
         required: true
       responses:
         201:
@@ -34,7 +34,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/todoItem"
+                $ref: "schema/todo_item.yaml"
         400:
           description: The request to create the todo item is not valid.
   /todos/{id}:
@@ -46,7 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/todoItem"
+                $ref: "schema/todo_item.yaml"
         404:
           description: No todo item exists with the given ID.
     put:
@@ -57,7 +57,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/todoItem"
+                $ref: "schema/todo_item.yaml"
         400:
           description: The request to replace the todo item is not valid.
         404:
@@ -70,7 +70,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/todoItem"
+                $ref: "schema/todo_item.yaml"
         400:
           description: The request to update the todo item is not valid.
         404:
@@ -78,7 +78,7 @@ paths:
     delete:
       summary: Deletes a todo item.
       responses:
-        200:
+        204:
           description: The todo item was deleted.
         404:
           description: No todo item exists with the given ID.
@@ -90,30 +90,4 @@ paths:
         schema:
           type: integer
           minimum: 1
-components:
-  schemas:
-    todoItem:
-      type: object
-      required:
-        - summary
-      properties:
-        id:
-          type: integer
-          description: The todo item's ID.
-          readOnly: true
-          example: 1
-        summary:
-          type: string
-          minLength: 1
-          description: A brief summary of the todo.
-          example: "Learn OpenAPI"
-        created_at:
-          type: string
-          format: date-time
-          description: The time the todo item was created.
-          readOnly: true
-        updated_at:
-          type: string
-          format: date-time
-          description: The time the todo item was last updated.
-          readOnly: true
+
