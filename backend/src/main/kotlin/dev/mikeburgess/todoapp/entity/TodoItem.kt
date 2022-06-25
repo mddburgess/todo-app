@@ -21,10 +21,10 @@ class TodoItem(
     val updatedAt: OffsetDateTime?,
 ) {
     constructor(data: TodoItemData) : this(
-        data.summary,
-        data.id,
-        data.createdAt,
-        data.updatedAt,
+        id = data.id,
+        summary = data.summary,
+        createdAt = data.createdAt,
+        updatedAt = data.updatedAt,
     )
 
     fun toData() = TodoItemData(summary, id, createdAt, updatedAt)
