@@ -1,2 +1,2 @@
 rootProject.name = "todo-app"
-include("backend")
+include("backend", "frontend")
