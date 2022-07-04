@@ -65,4 +65,14 @@ tasks {
     compileKotlin {
         dependsOn("openApiGenerate")
     }
+
+    register<Copy>("processFrontendResources") {
+        dependsOn(project(":frontend").tasks.named("assemble"))
+        from("${project(":frontend").projectDir}/dist")
+        into("${project.buildDir}/resources/main/static")
+    }
+
+    processResources {
+        dependsOn("processFrontendResources")
+    }
 }

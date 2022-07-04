@@ -3,5 +3,6 @@
 .parcel-cache/
 build/
 dist/
+node/
 node_modules/
 *.log
