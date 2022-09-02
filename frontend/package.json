@@ -4,15 +4,20 @@
   "private": true,
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "clean": "rm -f dist/* src/api/* && mkdir -p src/api",
+    "assemble": "npm run generate && npm run build",
+    "generate": "npx @rtk-query/codegen-openapi openapi-config.json",
     "build": "parcel build",
-    "clean": "rm -f dist/*"
+    "start": "parcel"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.2"
   },
   "devDependencies": {
+    "@rtk-query/codegen-openapi": "^1.0.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "parcel": "^2.6.2",

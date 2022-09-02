@@ -9,7 +9,9 @@ servers:
 paths:
   /todos:
     get:
+      tags: [ todos ]
       summary: Retrieves the entire list of todo items.
+      operationId: listTodoItems
       responses:
         200:
           description: OK
@@ -20,7 +22,9 @@ paths:
                 items:
                   $ref: "schema/todo_item.yaml"
     post:
+      tags: [ todos ]
       summary: Creates a new todo item.
+      operationId: createTodoItem
       requestBody:
         description: The todo item to create.
         content:
@@ -39,7 +43,9 @@ paths:
           description: The request to create the todo item is not valid.
   /todos/{id}:
     get:
+      tags: [ todos ]
       summary: Retrieves a todo item by its ID.
+      operationId: fetchTodoItem
       responses:
         200:
           description: OK
@@ -50,7 +56,9 @@ paths:
         404:
           description: No todo item exists with the given ID.
     put:
+      tags: [ todos ]
       summary: Replaces a todo item.
+      operationId: replaceTodoItem
       responses:
         200:
           description: The todo item was replaced.
@@ -63,7 +71,9 @@ paths:
         404:
           description: No todo item exists with the given ID.
     patch:
+      tags: [ todos ]
       summary: Updates a todo item.
+      operationId: updateTodoItem
       responses:
         200:
           description: The todo item was updated.
@@ -76,7 +86,9 @@ paths:
         404:
           description: No todo item exists with the given ID.
     delete:
+      tags: [ todos ]
       summary: Deletes a todo item.
+      operationId: deleteTodoItem
       responses:
         204:
           description: The todo item was deleted.
@@ -90,4 +102,3 @@ paths:
         schema:
           type: integer
           minimum: 1
-

@@ -1,0 +1,11 @@
+{
+    "schemaFile": "../api/openapi.yaml",
+    "apiFile": "./src/store/api.ts",
+    "outputFile": "./src/api/todoApi.ts",
+    "apiImport": "api",
+    "exportName": "todoApi",
+    "argSuffix": "Request",
+    "responseSuffix": "Response",
+    "hooks": true,
+    "tag": true
+}

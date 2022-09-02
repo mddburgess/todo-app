@@ -13,12 +13,12 @@ class TodosApiController(
     val repository: TodoItemRepository,
 ) : TodosApi {
 
-    override fun todosGet(): ResponseEntity<List<TodoItemData>> {
+    override fun listTodoItems(): ResponseEntity<List<TodoItemData>> {
         val entities = repository.findAll()
         return ResponseEntity.ok(entities.map { it.toData() })
     }
 
-    override fun todosPost(todoItemData: TodoItemData): ResponseEntity<TodoItemData> {
+    override fun createTodoItem(todoItemData: TodoItemData): ResponseEntity<TodoItemData> {
         val entity = repository.save(TodoItem(todoItemData))
         val location = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
@@ -27,7 +27,7 @@ class TodosApiController(
         return ResponseEntity.created(location).body(entity.toData())
     }
 
-    override fun todosIdGet(id: Int): ResponseEntity<TodoItemData> {
+    override fun fetchTodoItem(id: Int): ResponseEntity<TodoItemData> {
         val entity = repository.findByIdOrNull(id)
         return if (entity != null) {
             ResponseEntity.ok(entity.toData())
@@ -36,7 +36,7 @@ class TodosApiController(
         }
     }
 
-    override fun todosIdDelete(id: Int): ResponseEntity<Unit> {
+    override fun deleteTodoItem(id: Int): ResponseEntity<Unit> {
         val entity = repository.findByIdOrNull(id)
         return if (entity != null) {
             repository.delete(entity)

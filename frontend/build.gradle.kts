@@ -6,6 +6,6 @@ tasks {
     frontend {
         nodeVersion.set("18.4.0")
         cleanScript.set("run clean")
-        assembleScript.set("run build")
+        assembleScript.set("run assemble")
     }
 }
