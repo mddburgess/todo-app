@@ -33,8 +33,13 @@ class RequestLogFilter(
             filterChain.doFilter(request, response)
         } finally {
             if (shouldLog) {
-                val status = HttpStatus.resolve(response.status)
-                log.info { "<<= ${status?.value()} ${status?.reasonPhrase}" }
+                val status = HttpStatus.resolve(response.status)!!
+                val message = "<<= ${status.value()} ${status.reasonPhrase}"
+                when {
+                    status.is5xxServerError -> log.error { message }
+                    status.is4xxClientError -> log.warn { message }
+                    else -> log.info { message }
+                }
             }
         }
     }
