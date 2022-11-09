@@ -7,7 +7,7 @@
     "clean": "rm -f dist/* src/api/* && mkdir -p src/api",
     "assemble": "npm run generate && npm run build",
     "generate": "npx @rtk-query/codegen-openapi openapi-config.json",
-    "build": "parcel build",
+    "build": "parcel build --no-cache",
     "start": "parcel"
   },
   "dependencies": {
