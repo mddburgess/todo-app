@@ -4,9 +4,9 @@ group = "dev.mikeburgess.todoapp"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.openapi.generator") version "6.0.0"
-    id("org.springframework.boot") version "2.7.0"
+    id("org.springframework.boot") version "2.7.5"
 
     val kotlinVersion = "1.6.21"
     kotlin("jvm") version kotlinVersion
@@ -26,7 +26,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
-    implementation("io.github.microutils:kotlin-logging-jvm:2.1.20")
+    implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
 
     runtimeOnly("com.h2database:h2")
 
