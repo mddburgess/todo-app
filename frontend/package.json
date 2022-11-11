@@ -9,7 +9,7 @@
     "assemble": "npm run generate && npm run build",
     "generate": "npx @rtk-query/codegen-openapi openapi-config.json",
     "build": "parcel build --no-cache",
-    "start": "parcel"
+    "start": "parcel --no-cache"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
