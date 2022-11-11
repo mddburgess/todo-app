@@ -70,21 +70,6 @@ paths:
           description: The request to replace the todo item is not valid.
         404:
           description: No todo item exists with the given ID.
-    patch:
-      tags: [ todos ]
-      summary: Updates a todo item.
-      operationId: updateTodoItem
-      responses:
-        200:
-          description: The todo item was updated.
-          content:
-            application/json:
-              schema:
-                $ref: "schema/todo_item.yaml"
-        400:
-          description: The request to update the todo item is not valid.
-        404:
-          description: No todo item exists with the given ID.
     delete:
       tags: [ todos ]
       summary: Deletes a todo item.
