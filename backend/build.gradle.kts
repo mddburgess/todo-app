@@ -64,6 +64,10 @@ tasks {
         useJUnitPlatform()
     }
 
+    named("openApiGenerate") {
+        dependsOn(project(":api").tasks.named("check"))
+    }
+
     compileKotlin {
         dependsOn("openApiGenerate")
     }
