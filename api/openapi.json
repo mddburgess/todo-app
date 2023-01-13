@@ -1,0 +1,154 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Todo App API",
+    "description": "OpenAPI specification for a simple todo list app.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1",
+      "description": "Development"
+    }
+  ],
+  "paths": {
+    "/todos": {
+      "get": {
+        "tags": [
+          "todos"
+        ],
+        "description": "Retrieves the entire list of todo items.",
+        "operationId": "listTodoItems",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "schema/todo_item.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "todos"
+        ],
+        "description": "Creates a new todo item.",
+        "operationId": "createTodoItem",
+        "requestBody": {
+          "description": "The todo item to create.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "schema/todo_item.json"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "The todo item was created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schema/todo_item.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request to create the todo item is not valid."
+          }
+        }
+      }
+    },
+    "/todos/{id}": {
+      "get": {
+        "tags": [
+          "todos"
+        ],
+        "description": "Retrieves a todo item by its ID.",
+        "operationId": "fetchTodoItem",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schema/todo_item.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No todo item exits with the given ID."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "todos"
+        ],
+        "description": "Replaces a todo item.",
+        "operationId": "replaceTodoItem",
+        "responses": {
+          "200": {
+            "description": "The todo item was replaced.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "schema/todo_item.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "The request to replace the todo item is not valid."
+          },
+          "404": {
+            "description": "No todo item exists with the given ID."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "todos"
+        ],
+        "description": "Deletes a todo item.",
+        "operationId": "deleteTodoItem",
+        "responses": {
+          "204": {
+            "description": "The todo item was deleted."
+          },
+          "404": {
+            "description": "No todo item exists with the given ID."
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "The ID of a todo item.",
+          "required": true,
+          "schema": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      ]
+    }
+  },
+  "tags": [
+    {
+      "name": "todos"
+    }
+  ]
+}

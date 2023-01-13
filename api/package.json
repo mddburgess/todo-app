@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "lint": "spectral lint openapi.yaml"
+    "lint": "spectral lint openapi.json"
   },
   "devDependencies": {
     "@stoplight/spectral-cli": "^6.6.0"

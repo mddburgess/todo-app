@@ -1,0 +1,33 @@
+{
+  "title": "Todo Item",
+  "type": "object",
+  "required": [
+    "summary"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "The todo item's ID.",
+      "readOnly": true,
+      "example": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A brief summary of the todo.",
+      "example": "Learn OpenAPI"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time the todo item was created.",
+      "readOnly": true
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time the todo item was last updated.",
+      "readOnly": true
+    }
+  }
+}
