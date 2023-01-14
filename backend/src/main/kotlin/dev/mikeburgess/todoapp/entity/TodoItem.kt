@@ -1,6 +1,5 @@
 package dev.mikeburgess.todoapp.entity
 
-import dev.mikeburgess.todoapp.api.model.TodoItemData
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.OffsetDateTime
@@ -11,7 +10,7 @@ import javax.persistence.Id
 
 @Entity
 class TodoItem(
-    private val summary: String,
+    val summary: String,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Int?,
@@ -19,13 +18,4 @@ class TodoItem(
     val createdAt: OffsetDateTime?,
     @UpdateTimestamp
     val updatedAt: OffsetDateTime?,
-) {
-    constructor(data: TodoItemData) : this(
-        id = data.id,
-        summary = data.summary,
-        createdAt = data.createdAt,
-        updatedAt = data.updatedAt,
-    )
-
-    fun toData() = TodoItemData(summary, id, createdAt, updatedAt)
-}
+)

@@ -1,7 +1,8 @@
 package dev.mikeburgess.todoapp.api
 
 import dev.mikeburgess.todoapp.api.model.TodoItemData
-import dev.mikeburgess.todoapp.entity.TodoItem
+import dev.mikeburgess.todoapp.mappers.asData
+import dev.mikeburgess.todoapp.mappers.asEntity
 import dev.mikeburgess.todoapp.repository.TodoItemRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.ResponseEntity
@@ -15,22 +16,22 @@ class TodosApiController(
 
     override fun listTodoItems(): ResponseEntity<List<TodoItemData>> {
         val entities = repository.findAll()
-        return ResponseEntity.ok(entities.map { it.toData() })
+        return ResponseEntity.ok(entities.map { it.asData() })
     }
 
     override fun createTodoItem(todoItemData: TodoItemData): ResponseEntity<TodoItemData> {
-        val entity = repository.save(TodoItem(todoItemData))
+        val entity = repository.save(todoItemData.asEntity())
         val location = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
             .buildAndExpand(entity.id)
             .toUri()
-        return ResponseEntity.created(location).body(entity.toData())
+        return ResponseEntity.created(location).body(entity.asData())
     }
 
     override fun fetchTodoItem(id: Int): ResponseEntity<TodoItemData> {
         val entity = repository.findByIdOrNull(id)
         return if (entity != null) {
-            ResponseEntity.ok(entity.toData())
+            ResponseEntity.ok(entity.asData())
         } else {
             ResponseEntity.notFound().build()
         }
