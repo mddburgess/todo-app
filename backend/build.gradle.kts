@@ -6,6 +6,7 @@ version = "1.0.0-SNAPSHOT"
 plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
+    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
     id("org.openapi.generator") version "6.0.0"
     id("org.springframework.boot") version "2.7.5"
 
@@ -53,6 +54,12 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
 }
 
+ktlint {
+    filter {
+        exclude { it.file.path.contains("/generated/") }
+    }
+}
+
 kover {
     htmlReport {
         onCheck.set(true)
@@ -76,6 +83,10 @@ tasks {
     }
 
     compileKotlin {
+        dependsOn("openApiGenerate")
+    }
+
+    runKtlintCheckOverMainSourceSet {
         dependsOn("openApiGenerate")
     }
 
