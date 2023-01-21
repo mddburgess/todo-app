@@ -5,6 +5,7 @@ version = "1.0.0-SNAPSHOT"
 
 plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
+    id("org.jetbrains.kotlinx.kover") version "0.6.1"
     id("org.openapi.generator") version "6.0.0"
     id("org.springframework.boot") version "2.7.5"
 
@@ -50,6 +51,12 @@ kotlin {
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
+}
+
+kover {
+    htmlReport {
+        onCheck.set(true)
+    }
 }
 
 tasks {
