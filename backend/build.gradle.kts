@@ -38,7 +38,7 @@ openApiGenerate {
     generatorName.set("kotlin-spring")
     inputSpec.set("$projectDir/../api/openapi.json")
     outputDir.set("$buildDir/generated")
-    configFile.set("$projectDir/../api/api-config.json")
+    configFile.set("$projectDir/openapi-config.json")
 }
 
 kotlin {
