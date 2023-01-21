@@ -8,6 +8,5 @@ class TodoApplicationTest {
 
     @Test
     fun `context loads`() {
-
     }
 }
