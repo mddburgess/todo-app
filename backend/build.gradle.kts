@@ -90,6 +90,12 @@ tasks {
         dependsOn("openApiGenerate")
     }
 
+    register<Copy>("processApiResources") {
+        from("${project(":api").projectDir}")
+        into("${project.buildDir}/resources/main/static/spec")
+        include("openapi.json", "schema/**/*.json")
+    }
+
     register<Copy>("processFrontendResources") {
         dependsOn(project(":frontend").tasks.named("assemble"))
         from("${project(":frontend").projectDir}/dist")
@@ -97,6 +103,6 @@ tasks {
     }
 
     processResources {
-        dependsOn("processFrontendResources")
+        dependsOn("processApiResources", "processFrontendResources")
     }
 }
