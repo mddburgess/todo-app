@@ -4,7 +4,7 @@ import dev.mikeburgess.todoapp.api.model.TodoItemData
 import dev.mikeburgess.todoapp.entity.TodoItem
 
 fun TodoItem.asData(): TodoItemData =
-    TodoItemData(summary, id, createdAt, updatedAt)
+    TodoItemData(id, summary, createdAt, updatedAt)
 
 fun TodoItemData.asEntity(): TodoItem =
-    TodoItem(summary, id, createdAt, updatedAt)
+    TodoItem(id, summary, createdAt, updatedAt)

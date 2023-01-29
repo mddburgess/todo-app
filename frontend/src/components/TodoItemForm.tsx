@@ -9,7 +9,7 @@ interface Props {
 const TodoItemForm = ({initialState, onSave}: Props) => (
     <Formik initialValues={initialState} onSubmit={onSave}>
         <Form>
-            <Field name="body.summary" type="text"/>
+            <Field name="todoItem.summary" type="text"/>
         </Form>
     </Formik>
 )

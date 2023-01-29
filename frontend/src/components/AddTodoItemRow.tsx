@@ -4,8 +4,11 @@ import {useCreateTodoItemMutation} from "../api/todoApi";
 const AddTodoItemRow = () => {
     const [createTodoItem] = useCreateTodoItemMutation();
     const initialState = {
-        body: {
-            summary: ""
+        todoItem: {
+            id: undefined,
+            summary: "",
+            created_at: undefined,
+            updated_at: undefined
         }
     }
 

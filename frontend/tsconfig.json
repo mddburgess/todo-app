@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "isolatedModules": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "skipLibCheck": true
   }
 }

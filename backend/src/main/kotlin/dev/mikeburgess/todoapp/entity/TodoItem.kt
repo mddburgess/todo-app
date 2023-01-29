@@ -10,10 +10,10 @@ import javax.persistence.Id
 
 @Entity
 class TodoItem(
-    val summary: String,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Int?,
+    val summary: String,
     @CreationTimestamp
     val createdAt: OffsetDateTime?,
     @UpdateTimestamp

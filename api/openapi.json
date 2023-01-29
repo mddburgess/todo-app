@@ -15,8 +15,9 @@
     "/todos": {
       "get": {
         "tags": [
-          "todos"
+          "Todos"
         ],
+        "summary": "List todo items",
         "description": "Retrieves the entire list of todo items.",
         "operationId": "listTodoItems",
         "responses": {
@@ -27,7 +28,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "schema/todo_item.json"
+                    "$ref": "#/components/schemas/todo_item"
                   }
                 }
               }
@@ -37,8 +38,9 @@
       },
       "post": {
         "tags": [
-          "todos"
+          "Todos"
         ],
+        "summary": "Create todo item",
         "description": "Creates a new todo item.",
         "operationId": "createTodoItem",
         "requestBody": {
@@ -46,7 +48,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "schema/todo_item.json"
+                "$ref": "#/components/schemas/todo_item"
               }
             }
           },
@@ -58,7 +60,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "schema/todo_item.json"
+                  "$ref": "#/components/schemas/todo_item"
                 }
               }
             }
@@ -72,8 +74,9 @@
     "/todos/{id}": {
       "get": {
         "tags": [
-          "todos"
+          "Todos"
         ],
+        "summary": "Fetch todo item",
         "description": "Retrieves a todo item by its ID.",
         "operationId": "fetchTodoItem",
         "responses": {
@@ -82,7 +85,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "schema/todo_item.json"
+                  "$ref": "#/components/schemas/todo_item"
                 }
               }
             }
@@ -94,17 +97,29 @@
       },
       "put": {
         "tags": [
-          "todos"
+          "Todos"
         ],
+        "summary": "Replace todo item",
         "description": "Replaces a todo item.",
         "operationId": "replaceTodoItem",
+        "requestBody": {
+          "description": "The new value of the todo item.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/todo_item"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "The todo item was replaced.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "schema/todo_item.json"
+                  "$ref": "#/components/schemas/todo_item"
                 }
               }
             }
@@ -119,8 +134,9 @@
       },
       "delete": {
         "tags": [
-          "todos"
+          "Todos"
         ],
+        "summary": "Delete todo item",
         "description": "Deletes a todo item.",
         "operationId": "deleteTodoItem",
         "responses": {
@@ -146,9 +162,16 @@
       ]
     }
   },
+  "components": {
+    "schemas": {
+      "todo_item": {
+        "$ref": "schema/todo_item.json"
+      }
+    }
+  },
   "tags": [
     {
-      "name": "todos"
+      "name": "Todos"
     }
   ]
 }
