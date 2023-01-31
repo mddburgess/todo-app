@@ -4,7 +4,7 @@
   "private": true,
   "source": "src/index.html",
   "scripts": {
-    "dependencies": "npx npm-check-updates -u && npm install",
+    "prepare": "npx npm-check-updates -u",
     "clean": "rm -f dist/* src/api/* && mkdir -p src/api",
     "assemble": "npm run generate && npm run check && npm run build",
     "generate": "npx @rtk-query/codegen-openapi openapi-config.json",

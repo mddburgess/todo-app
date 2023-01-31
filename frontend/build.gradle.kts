@@ -4,7 +4,6 @@ plugins {
 
 frontend {
     nodeVersion.set("18.4.0")
-    installScript.set("run dependencies")
     cleanScript.set("run clean")
     assembleScript.set("run assemble")
 }
