@@ -1,5 +1,6 @@
 import TodoItemForm from "./TodoItemForm";
 import {useCreateTodoItemMutation} from "../api/todoApi";
+import ListGroupItem from "react-bootstrap/ListGroupItem";
 
 const AddTodoItemRow = () => {
     const [createTodoItem] = useCreateTodoItemMutation();
@@ -13,9 +14,9 @@ const AddTodoItemRow = () => {
     }
 
     return (
-        <li>
+        <ListGroupItem>
             <TodoItemForm initialState={initialState} onSave={createTodoItem}/>
-        </li>
+        </ListGroupItem>
     )
 }
 
