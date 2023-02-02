@@ -93,19 +93,27 @@ tasks {
         dependsOn("openApiGenerate")
     }
 
-    register<Copy>("processApiResources") {
+    register<Copy>("copyApiResources") {
         from("${project(":api").projectDir}")
         into("${project.buildDir}/resources/main/static/spec")
         include("openapi.json", "schema/**/*.json")
     }
 
-    register<Copy>("processFrontendResources") {
+    processResources {
+        dependsOn("copyApiResources")
+    }
+
+    register<Copy>("copyFrontendResources") {
         dependsOn(project(":frontend").tasks.named("assemble"))
         from("${project(":frontend").projectDir}/dist")
         into("${project.buildDir}/resources/main/static")
     }
 
-    processResources {
-        dependsOn("processApiResources", "processFrontendResources")
+    bootJar {
+        dependsOn("copyFrontendResources")
+    }
+
+    bootRun {
+        dependsOn("copyFrontendResources")
     }
 }
