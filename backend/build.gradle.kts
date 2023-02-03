@@ -40,7 +40,7 @@ dependencies {
 
 openApiGenerate {
     generatorName.set("kotlin-spring")
-    inputSpec.set("$projectDir/../api/openapi.json")
+    inputSpec.set("$projectDir/../api/src/openapi.json")
     outputDir.set("$buildDir/generated")
     configFile.set("$projectDir/openapi-config.json")
 }
@@ -94,9 +94,8 @@ tasks {
     }
 
     register<Copy>("copyApiResources") {
-        from("${project(":api").projectDir}")
+        from("${project(":api").projectDir}/src")
         into("${project.buildDir}/resources/main/static/spec")
-        include("openapi.json", "schema/**/*.json")
     }
 
     processResources {

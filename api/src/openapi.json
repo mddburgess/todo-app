@@ -66,7 +66,7 @@
             }
           },
           "400": {
-            "description": "The request to create the todo item is not valid."
+            "$ref": "responses/400.json"
           }
         }
       }
@@ -91,7 +91,7 @@
             }
           },
           "404": {
-            "description": "No todo item exits with the given ID."
+            "$ref": "responses/404.json"
           }
         }
       },
@@ -125,10 +125,10 @@
             }
           },
           "400": {
-            "description": "The request to replace the todo item is not valid."
+            "$ref": "responses/400.json"
           },
           "404": {
-            "description": "No todo item exists with the given ID."
+            "$ref": "responses/404.json"
           }
         }
       },
@@ -144,7 +144,7 @@
             "description": "The todo item was deleted."
           },
           "404": {
-            "description": "No todo item exists with the given ID."
+            "$ref": "responses/404.json"
           }
         }
       },

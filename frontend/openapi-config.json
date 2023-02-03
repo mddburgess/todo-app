@@ -1,5 +1,5 @@
 {
-    "schemaFile": "../api/openapi.json",
+    "schemaFile": "../api/src/openapi.json",
     "apiFile": "./src/store/api.ts",
     "outputFile": "./src/api/todoApi.ts",
     "apiImport": "api",

@@ -1,0 +1,15 @@
+{
+  "description": "The request is syntactically incorrect or violates the schema.",
+  "content": {
+    "application/problem+json": {
+      "schema": {
+        "$ref": "../schema/problem.json"
+      },
+      "example": {
+        "title": "Bad Request",
+        "status": 400,
+        "detail": "The request is syntactically incorrect or violates the schema."
+      }
+    }
+  }
+}
