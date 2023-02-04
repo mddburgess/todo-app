@@ -28,7 +28,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
+    implementation("org.zalando:problem-spring-web-starter:0.28.0-RC.0")
 
     runtimeOnly("com.h2database:h2")
 

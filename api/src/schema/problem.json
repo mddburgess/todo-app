@@ -1,37 +1,36 @@
 {
   "title": "Problem",
+  "description": "A description of the problem that occurred while attempting to process the request. This description conforms to the RFC 7807 specification.",
   "type": "object",
   "properties": {
     "type": {
       "description": "A URI reference that identifies the problem type.",
       "type": "string",
-      "format": "uri-reference"
+      "format": "uri-reference",
+      "example": "about:blank"
     },
     "title": {
       "description": "A short, human-readable summary of the problem type.",
-      "type": "string"
+      "type": "string",
+      "example": "Internal Server Error"
     },
     "status": {
       "description": "The HTTP status code for this occurrence of the problem.",
       "type": "integer",
       "minimum": 100,
-      "maximum": 599
+      "maximum": 599,
+      "example": 500
     },
     "detail": {
       "description": "A human-readable explanation specific to this occurrence of the problem.",
-      "type": "string"
+      "type": "string",
+      "example": "An internal server error has occurred."
     },
     "instance": {
       "description": "A URI reference that identifies the specific occurrence of the problem.",
       "type": "string",
-      "format": "uri-reference"
+      "format": "uri-reference",
+      "example": "/problem/1234567890"
     }
-  },
-  "example": {
-    "type": "about:blank",
-    "title": "Internal Server Error",
-    "status": 500,
-    "detail": "An internal server error has occurred.",
-    "instance": "/problem/1234567890"
   }
 }
