@@ -1,49 +1,37 @@
 package dev.mikeburgess.todoapp.api
 
 import dev.mikeburgess.todoapp.api.model.TodoItemData
-import dev.mikeburgess.todoapp.mappers.asData
-import dev.mikeburgess.todoapp.mappers.asEntity
-import dev.mikeburgess.todoapp.repository.TodoItemRepository
-import org.springframework.data.repository.findByIdOrNull
+import dev.mikeburgess.todoapp.service.TodoItemService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
 class TodosApiController(
-    val repository: TodoItemRepository,
+    val todoItemService: TodoItemService
 ) : TodosApi {
 
     override fun listTodoItems(): ResponseEntity<List<TodoItemData>> {
-        val entities = repository.findAll()
-        return ResponseEntity.ok(entities.map { it.asData() })
+        val todoItems = todoItemService.listAll()
+        return ResponseEntity.ok(todoItems)
     }
 
     override fun createTodoItem(todoItemData: TodoItemData): ResponseEntity<TodoItemData> {
-        val entity = repository.save(todoItemData.asEntity())
+        val todoItem = todoItemService.create(todoItemData)
         val location = ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(entity.id)
+            .buildAndExpand(todoItem.id)
             .toUri()
-        return ResponseEntity.created(location).body(entity.asData())
+        return ResponseEntity.created(location).body(todoItem)
     }
 
     override fun fetchTodoItem(id: Int): ResponseEntity<TodoItemData> {
-        val entity = repository.findByIdOrNull(id)
-        return if (entity != null) {
-            ResponseEntity.ok(entity.asData())
-        } else {
-            ResponseEntity.notFound().build()
-        }
+        val todoItem = todoItemService.findById(id)
+        return ResponseEntity.ok(todoItem)
     }
 
     override fun deleteTodoItem(id: Int): ResponseEntity<Unit> {
-        val entity = repository.findByIdOrNull(id)
-        return if (entity != null) {
-            repository.delete(entity)
-            ResponseEntity.noContent().build()
-        } else {
-            ResponseEntity.notFound().build()
-        }
+        todoItemService.deleteById(id)
+        return ResponseEntity.noContent().build()
     }
 }

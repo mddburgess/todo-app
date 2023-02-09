@@ -1,7 +1,5 @@
 package dev.mikeburgess.todoapp.api
 
-import com.ninjasquad.springmockk.MockkBean
-import dev.mikeburgess.todoapp.repository.TodoItemRepository
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -12,13 +10,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
-@WebMvcTest
+@WebMvcTest(ApiSpecController::class)
 class ApiSpecControllerTest(
     @Autowired val mockMvc: MockMvc,
 ) {
-
-    @MockkBean
-    lateinit var todoItemRepository: TodoItemRepository
 
     @ParameterizedTest
     @ValueSource(strings = ["/api/spec", "/api/spec/", "/api/spec/openapi.json"])
