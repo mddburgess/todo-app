@@ -1,2 +1,2 @@
 rootProject.name = "todo-app"
-include("api", "backend", "frontend")
+include("api", "backend", "frontend", "package")

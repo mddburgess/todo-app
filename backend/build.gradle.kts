@@ -4,16 +4,16 @@ group = "dev.mikeburgess.todoapp"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
+    val kotlinVersion = "1.6.21"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
+    kotlin("plugin.jpa") version kotlinVersion
+
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
     id("org.openapi.generator") version "6.0.0"
     id("org.springframework.boot") version "2.7.5"
-
-    val kotlinVersion = "1.6.21"
-    kotlin("jvm") version kotlinVersion
-    kotlin("plugin.spring") version kotlinVersion
-    kotlin("plugin.jpa") version kotlinVersion
 }
 
 repositories {
@@ -102,19 +102,5 @@ tasks {
 
     processResources {
         dependsOn("copyApiResources")
-    }
-
-    register<Copy>("copyFrontendResources") {
-        dependsOn(project(":frontend").tasks.named("assemble"))
-        from("${project(":frontend").projectDir}/dist")
-        into("${project.buildDir}/resources/main/static")
-    }
-
-    bootJar {
-        dependsOn("copyFrontendResources")
-    }
-
-    bootRun {
-        dependsOn("copyFrontendResources")
     }
 }
