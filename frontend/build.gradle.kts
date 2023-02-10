@@ -10,6 +10,6 @@ frontend {
 
 tasks {
     assembleFrontend {
-        dependsOn(project(":api").tasks.named("check"))
+        dependsOn(project(":api").tasks.named("validate"))
     }
 }

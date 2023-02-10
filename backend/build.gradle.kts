@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "dev.mikeburgess.todoapp"
@@ -12,7 +13,6 @@ plugins {
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
     id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
-    id("org.openapi.generator") version "6.0.0"
     id("org.springframework.boot") version "2.7.5"
 }
 
@@ -32,6 +32,8 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging-jvm:3.0.4")
     implementation("org.zalando:problem-spring-web-starter:0.28.0-RC.0")
 
+    implementation(project(":api"))
+
     runtimeOnly("com.h2database:h2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
@@ -40,29 +42,8 @@ dependencies {
     testImplementation("com.ninja-squad:springmockk:4.0.0")
 }
 
-openApiGenerate {
-    generatorName.set("kotlin-spring")
-    inputSpec.set("$projectDir/../api/src/openapi.json")
-    outputDir.set("$buildDir/generated")
-    configFile.set("$projectDir/openapi-config.json")
-}
-
-kotlin {
-    sourceSets {
-        main {
-            kotlin.srcDir("$buildDir/generated/src/main/kotlin")
-        }
-    }
-}
-
 java {
     sourceCompatibility = JavaVersion.VERSION_17
-}
-
-ktlint {
-    filter {
-        exclude { it.file.path.contains("/generated/") }
-    }
 }
 
 kover {
@@ -81,26 +62,5 @@ tasks {
 
     withType<Test> {
         useJUnitPlatform()
-    }
-
-    named("openApiGenerate") {
-        dependsOn(project(":api").tasks.named("check"))
-    }
-
-    compileKotlin {
-        dependsOn("openApiGenerate")
-    }
-
-    runKtlintCheckOverMainSourceSet {
-        dependsOn("openApiGenerate")
-    }
-
-    register<Copy>("copyApiResources") {
-        from("${project(":api").projectDir}/src")
-        into("${project.buildDir}/resources/main/static/spec")
-    }
-
-    processResources {
-        dependsOn("copyApiResources")
     }
 }
