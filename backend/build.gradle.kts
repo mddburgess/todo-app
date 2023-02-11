@@ -1,4 +1,7 @@
 
+import kotlinx.kover.api.CounterType
+import kotlinx.kover.api.VerificationTarget
+import kotlinx.kover.api.VerificationValueType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "dev.mikeburgess.todoapp"
@@ -49,6 +52,19 @@ java {
 kover {
     htmlReport {
         onCheck.set(true)
+    }
+
+    verify {
+        onCheck.set(true)
+
+        rule {
+            target = VerificationTarget.CLASS
+            bound {
+                counter = CounterType.LINE
+                valueType = VerificationValueType.MISSED_COUNT
+                maxValue = 0
+            }
+        }
     }
 }
 
