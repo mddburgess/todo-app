@@ -41,6 +41,7 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
+        exclude(module = "mockito-junit-jupiter")
     }
     testImplementation("com.ninja-squad:springmockk:4.0.0")
 }
@@ -50,6 +51,15 @@ java {
 }
 
 kover {
+    filters {
+        classes {
+            excludes += listOf(
+                "dev.mikeburgess.todoapp.TodoApplicationKt",
+                "dev.mikeburgess.todoapp.filters.*"
+            )
+        }
+    }
+
     htmlReport {
         onCheck.set(true)
     }
