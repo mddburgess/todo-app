@@ -4,11 +4,7 @@
   "private": true,
   "source": "src/index.html",
   "scripts": {
-    "prepare": "npx npm-check-updates -u",
-    "clean": "rm -f dist/* src/api/* && mkdir -p src/api",
-    "assemble": "npm run generate && npm run check && npm run build",
-    "generate": "npx @rtk-query/codegen-openapi openapi-config.json",
-    "check": "tsc --noEmit",
+    "validate": "tsc --noEmit",
     "build": "parcel build --no-cache",
     "start": "parcel --no-cache"
   },
@@ -17,7 +13,7 @@
     "bootstrap": "^5.2.3",
     "formik": "^2.2.9",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.7.0",
+    "react-bootstrap": "^2.7.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5"
   },
