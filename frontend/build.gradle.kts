@@ -48,7 +48,16 @@ tasks {
         npmCommand.addAll("run", "build")
     }
 
+    register<NpmTask>("test") {
+        dependsOn("validateTypescript")
+        npmCommand.addAll("test")
+    }
+
+    register<DefaultTask>("check") {
+        dependsOn("test")
+    }
+
     register<DefaultTask>("build") {
-        dependsOn("assemble")
+        dependsOn("assemble", "check")
     }
 }
