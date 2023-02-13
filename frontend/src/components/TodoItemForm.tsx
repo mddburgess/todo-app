@@ -1,29 +1,28 @@
 import {CreateTodoItemRequest} from "../api/todoApi";
 import {Field, Form, Formik} from "formik";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import FormControl from "react-bootstrap/FormControl";
+import {Button, InputGroup} from "react-bootstrap";
+import {PencilFill} from "react-bootstrap-icons";
 
 interface Props {
     initialState: CreateTodoItemRequest;
-    onSave: (todoItem: CreateTodoItemRequest) => void;
+    onSubmit: (todoItem: CreateTodoItemRequest) => void;
 }
 
-const TodoItemForm = ({initialState, onSave}: Props) => (
-    <Formik initialValues={initialState} onSubmit={onSave}>
+const TodoItemForm = ({initialState, onSubmit}: Props) => (
+    <Formik initialValues={initialState} onSubmit={onSubmit}>
         <Form>
-            <Row>
-                <Col>
-                    <Field
-                        name="todoItem.summary"
-                        type="text"
-                        as={FormControl}
-                        size="sm"
-                        placeholder="Add a todo item..."
-                    />
-                </Col>
-            </Row>
-
+            <InputGroup>
+                <Field
+                    name="todoItem.summary"
+                    type="text"
+                    as={FormControl}
+                    placeholder="Add a todo item..."
+                />
+                <Button type="submit" className="d-flex align-items-center">
+                    <PencilFill/>
+                </Button>
+            </InputGroup>
         </Form>
     </Formik>
 )

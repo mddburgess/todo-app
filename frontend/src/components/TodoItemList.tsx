@@ -1,15 +1,13 @@
 import {useListTodoItemsQuery} from "../api/todoApi";
 import TodoItemRow from "./TodoItemRow";
-import AddTodoItemRow from "./AddTodoItemRow";
 import ListGroup from "react-bootstrap/ListGroup";
 
 const TodoItemList = () => {
     const todoItems = useListTodoItemsQuery()
 
     return (
-        <ListGroup>
+        <ListGroup className="mt-3 mb-5">
             {todoItems.data?.map(item => <TodoItemRow item={item}/>)}
-            <AddTodoItemRow/>
         </ListGroup>
     )
 }
