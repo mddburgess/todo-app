@@ -5,10 +5,9 @@ group = "dev.mikeburgess.todoapp"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
-    val kotlinVersion = "1.6.21"
-    kotlin("jvm") version kotlinVersion
-    kotlin("plugin.spring") version kotlinVersion
-    kotlin("plugin.jpa") version kotlinVersion
+    kotlin("jvm")
+    kotlin("plugin.spring")
+    kotlin("plugin.jpa")
 
     id("com.github.node-gradle.node") version "3.5.1"
     id("org.openapi.generator") version "6.0.0"

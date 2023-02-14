@@ -8,10 +8,9 @@ group = "dev.mikeburgess.todoapp"
 version = "1.0.0-SNAPSHOT"
 
 plugins {
-    val kotlinVersion = "1.6.21"
-    kotlin("jvm") version kotlinVersion
-    kotlin("plugin.spring") version kotlinVersion
-    kotlin("plugin.jpa") version kotlinVersion
+    kotlin("jvm")
+    kotlin("plugin.spring")
+    kotlin("plugin.jpa")
 
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
     id("org.jetbrains.kotlinx.kover") version "0.6.1"
