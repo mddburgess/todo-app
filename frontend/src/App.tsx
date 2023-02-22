@@ -1,15 +1,15 @@
-import {ApiProvider} from "@reduxjs/toolkit/dist/query/react";
 import Container from "react-bootstrap/Container";
 import TodoItemList from "./components/TodoItemList";
-import {api} from "./store/api";
 import AddTodoItemForm from "./components/AddTodoItemForm";
+import {Provider} from "react-redux";
+import store from "./store";
 
 export const App = () => (
-    <ApiProvider api={api}>
+    <Provider store={store}>
         <Container fluid="sm" className="mw-md">
             <h1>My Todos</h1>
             <AddTodoItemForm/>
             <TodoItemList/>
         </Container>
-    </ApiProvider>
+    </Provider>
 )
