@@ -1,4 +1,5 @@
 import com.github.gradle.node.npm.task.NpmTask
+import com.github.gradle.node.npm.task.NpxTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "dev.mikeburgess.todoapp"
@@ -48,6 +49,15 @@ tasks {
             freeCompilerArgs = listOf("-Xjsr305=strict")
             jvmTarget = "17"
         }
+    }
+
+    register<NpxTask>("npmCheckUpdates") {
+        command.set("npm-check-updates")
+        args.add("-u")
+    }
+
+    npmInstall {
+        dependsOn("npmCheckUpdates")
     }
 
     register<NpmTask>("validate") {
