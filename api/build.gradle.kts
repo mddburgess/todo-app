@@ -37,6 +37,11 @@ kotlin {
     }
 }
 
+node {
+    download.set(true)
+    workDir.set(file("$rootDir/.gradle/nodejs"))
+}
+
 tasks {
     withType<KotlinCompile> {
         kotlinOptions {
@@ -46,6 +51,7 @@ tasks {
     }
 
     register<NpmTask>("validate") {
+        dependsOn(npmInstall)
         npmCommand.set(listOf("run", "lint"))
     }
 

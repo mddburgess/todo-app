@@ -5,6 +5,11 @@ plugins {
     id("com.github.node-gradle.node") version "3.5.1"
 }
 
+node {
+    download.set(true)
+    workDir.set(file("$rootDir/.gradle/nodejs"))
+}
+
 tasks {
     register<Delete>("clean") {
         delete("dist", "src/api")
