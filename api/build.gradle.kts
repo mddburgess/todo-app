@@ -26,14 +26,14 @@ dependencies {
 openApiGenerate {
     generatorName.set("kotlin-spring")
     inputSpec.set("$projectDir/src/openapi.json")
-    outputDir.set("$buildDir/generated")
+    outputDir.set(layout.buildDirectory.dir("generated").get().asFile.path)
     configFile.set("$projectDir/openapi-config.json")
 }
 
 kotlin {
     sourceSets {
         main {
-            kotlin.srcDir("$buildDir/generated/src/main/kotlin")
+            kotlin.srcDir(layout.buildDirectory.dir("generated/src/main/kotlin"))
         }
     }
 }
@@ -76,7 +76,7 @@ tasks {
 
     register<Copy>("copyResources") {
         from("$projectDir/src")
-        into("$buildDir/resources/main/static/spec")
+        into(layout.buildDirectory.dir("resources/main/static/spec"))
     }
 
     processResources {
