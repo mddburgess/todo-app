@@ -10,7 +10,7 @@ plugins {
     kotlin("plugin.spring")
     kotlin("plugin.jpa")
 
-    id("com.github.node-gradle.node") version "3.5.1"
+    id("com.github.node-gradle.node") version "7.1.0"
     id("org.openapi.generator") version "6.0.0"
 }
 

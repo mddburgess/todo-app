@@ -2,7 +2,7 @@ import com.github.gradle.node.npm.task.NpmTask
 import com.github.gradle.node.npm.task.NpxTask
 
 plugins {
-    id("com.github.node-gradle.node") version "3.5.1"
+    id("com.github.node-gradle.node") version "7.1.0"
 }
 
 node {
