@@ -11,7 +11,7 @@ plugins {
     kotlin("plugin.jpa")
 
     id("com.github.node-gradle.node") version "7.1.0"
-    id("org.openapi.generator") version "6.0.0"
+    id("org.openapi.generator") version "6.4.0"
 }
 
 repositories {
